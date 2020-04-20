@@ -27,11 +27,12 @@
             Result
         },
         mounted() {
-            this.axios.get('http://data.fixer.io/api/symbols?access_key=75c731a1b9fbfe29fe8cfdded933dec4').then(res => {
+            console.log(process.env.VUE_APP_API_KEY)
+            this.axios.get(`http://data.fixer.io/api/symbols?access_key=${process.env.VUE_APP_API_KEY}`).then(res => {
                 this.devises = res.data.symbols
             })
 
-            this.axios.get('http://data.fixer.io/api/latest?access_key=75c731a1b9fbfe29fe8cfdded933dec4').then(res => {
+            this.axios.get(`http://data.fixer.io/api/latest?access_key=${process.env.VUE_APP_API_KEY}`).then(res => {
                 this.rates = res.data.rates
             })
         },
